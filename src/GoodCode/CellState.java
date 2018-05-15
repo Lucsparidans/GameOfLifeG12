@@ -1,4 +1,4 @@
 package GoodCode;
 
-public class CellState {
+public abstract class CellState {
 }
