@@ -1,4 +1,4 @@
 package GoodCode;
 
-public class DeadState {
+public class DeadState extends CellState{
 }
