@@ -5,23 +5,49 @@ import java.awt.BorderLayout;
 import java.awt.Panel;
 
 public class GameOfLifeApp extends JFrame {
-    private int WIDTH = 600;
-    private int HEIGHT = 800;
+    private final int WIDTH = 600;
+    private final int HEIGHT = 800;
     private final JButton button = new JButton("pause");
-    private Panel panel = new Panel();
+    private final int delay = 100;
+    private boolean paused;
+    private Panel panel;
+    private Thread th;
     private GameOfLifeApp(){
+        //Window
         super("Game of life");
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setResizable(false);
         this.setSize(WIDTH,HEIGHT);
         this.setLocationRelativeTo(null);
+        panel = new Panel();
         this.add(panel, BorderLayout.NORTH);
         panel.add(button);
-        pack();
         this.setVisible(true);
+
+        //Game
+        th = new Thread();
+        paused = false;
     }
     public static void main(String[] args){
         GameOfLifeApp app = new GameOfLifeApp();
 
+    }
+
+    public void run(){
+        while (true) {
+            try {
+                Thread.sleep(delay);
+            }
+            catch (Exception e) {e.printStackTrace();}
+            if (!paused) ;//update GameOfLifeUI
+        }
+    }
+    public void pause(){
+        if(paused){
+            paused = false;
+        }
+        else{
+            paused = true;
+        }
     }
 }
